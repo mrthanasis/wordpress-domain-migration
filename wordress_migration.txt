@@ -1,0 +1,10 @@
+SET @oldsite='http://oldyoursite.com'; 
+SET @newsite='http://newyoursite.com';
+
+UPDATE wp_options SET option_value = replace(option_value, oldyoursite.com, newyoursite.com) WHERE option_name = 'home' OR option_name = 'siteurl';
+UPDATE wp_posts SET post_content = replace(post_content, oldyoursite.com, newyoursite.com);
+UPDATE wp_links SET link_url = replace(link_url, oldyoursite.com, newyoursite.com);
+UPDATE wp_postmeta SET meta_value = replace(meta_value, oldyoursite.com, newyoursite.com);
+
+/* only uncomment next line if you want all your current posts to post to RSS again as new */
+#UPDATE wp_posts SET guid = replace(guid, oldyoursite.com, newyoursite.com);
